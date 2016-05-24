@@ -1,0 +1,208 @@
+<h1 id=headers>Headers</h1>
+<h1 id=innehållsförteckning>Innehållsförteckning</h1>
+<p>&lt;!-- toc --&gt;</p>
+<ul>
+<li><a href="#h1heppå">H1.hepp.å</a>
+<ul>
+<li><a href="#h2">H2</a>
+<ul>
+<li><a href="#h3">H3</a>
+<ul>
+<li><a href="#h4">H4</a>
+<ul>
+<li><a href="#h5">H5</a>
+<ul>
+<li><a href="#h6">H6</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#table">Table</a></li>
+<li><a href="#color-highlight">Color highlight</a>
+<ul>
+<li><a href="#c#">C#</a></li>
+<li><a href="#java">Java</a></li>
+<li><a href="#typescript">TypeScript</a></li>
+<li><a href="#javascript">Javascript</a></li>
+<li><a href="#json">JSON</a></li>
+<li><a href="#http">HTTP</a></li>
+<li><a href="#xml">XML</a></li>
+<li><a href="#html">HTML</a></li>
+<li><a href="#markdown">Markdown</a></li>
+</ul></li>
+<li><a href="#lists">Lists</a></li>
+<li><a href="#text">Text</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#images">Images</a></li>
+</ul>
+<p>&lt;!-- tocstop --&gt;</p>
+<h1 id=h1heppå>H1.hepp.å</h1>
+<h2 id=h2>H2</h2>
+<h3 id=h3>H3</h3>
+<h4 id=h4>H4</h4>
+<h5 id=h5>H5</h5>
+<h6 id=h6>H6</h6>
+<h1 id=table>Table</h1>
+<table>
+<thead>
+<tr><th>Text</th><th style="text-align:center">Center</th><th style="text-align:left">Align Left</th><th style="text-align:right">Align Right</th></tr>
+</thead>
+<tbody>
+<tr><td>Test</td><td style="text-align:center">1.0</td><td style="text-align:left">Test</td><td style="text-align:right">Test</td></tr>
+<tr><td>Test</td><td style="text-align:center">2.0</td><td style="text-align:left">Test</td><td style="text-align:right">Test</td></tr>
+<tr><td>Test</td><td style="text-align:center">3.0</td><td style="text-align:left">Test</td><td style="text-align:right">Test</td></tr>
+</tbody>
+</table>
+<h1 id=color-highlight>Color highlight</h1>
+<p>See <a href="https://highlightjs.org/static/demo/">highlightjs.org</a> for supported languages and protocols.</p>
+<h2 id=c#>C#</h2>
+<pre><code class="language-cs">/// &lt;summary&gt;Test&lt;/summary&gt;
+public void Test(int i)
+{
+    // Comment
+    string a = &quot;text&quot;;
+    return i;
+}
+</code></pre>
+<h2 id=java>Java</h2>
+<pre><code class="language-java">/**
+ * @author FistName LastName &lt;firstname.lastname@company.com&gt;
+ * @version 1.0
+*/
+public void Test(int i)
+{
+    // Comment
+    String a = &quot;text&quot;;
+    return i;
+}
+</code></pre>
+<h2 id=typescript>TypeScript</h2>
+<pre><code class="language-TypeScript">class MyClass {
+    public static myValue: string;
+    constructor(init: string) {
+      this.myValue = init;
+    }
+  }
+  import fs = require(&quot;fs&quot;);
+  module MyModule {
+    export interface MyInterface extends OtherInterface {
+      myProperty: any;
+    }
+  }
+  declare magicNumber number;
+  myArray.forEach(() =&gt; {
+    // fat arrow syntax
+  });
+</code></pre>
+<h2 id=javascript>Javascript</h2>
+<pre><code class="language-javascript">// Comment
+function fancyAlert(arg) {
+  if(arg) {
+    $.facebox({div:'#foo'})
+  }
+}
+</code></pre>
+<h2 id=json>JSON</h2>
+<pre><code class="language-json">[
+  {
+    &quot;title&quot;: &quot;apples&quot;,
+    &quot;count&quot;: [12000, 20000],
+    &quot;description&quot;: {&quot;text&quot;: &quot;...&quot;, &quot;sensitive&quot;: false}
+  },
+  {
+    &quot;title&quot;: &quot;oranges&quot;,
+    &quot;count&quot;: [17500, null],
+    &quot;description&quot;: {&quot;text&quot;: &quot;...&quot;, &quot;sensitive&quot;: false}
+  }
+]
+</code></pre>
+<h2 id=http>HTTP</h2>
+<pre><code class="language-http">POST /task?id=1 HTTP/1.1
+Host: example.org
+Content-Type: application/json; charset=utf-8
+Content-Length: 19
+
+{&quot;status&quot;: &quot;ok&quot;, &quot;extended&quot;: true}
+</code></pre>
+<h2 id=xml>XML</h2>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;!-- Comment --&gt;
+&lt;response value=&quot;ok&quot; xml:lang=&quot;en&quot;&gt;
+  &lt;text&gt;Ok&lt;/text&gt;
+  &lt;comment html_allowed=&quot;true&quot;/&gt;
+  &lt;ns1:description&gt;&lt;![CDATA[
+  CDATA is &lt;not&gt; magical.
+  ]]&gt;&lt;/ns1:description&gt;
+  &lt;a&gt;&lt;/a&gt; &lt;a/&gt;
+&lt;/response&gt;
+</code></pre>
+<h2 id=html>HTML</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;title&gt;Title&lt;/title&gt;
+
+&lt;style&gt;body {width: 500px;}&lt;/style&gt;
+
+&lt;script type=&quot;application/javascript&quot;&gt;
+  function $init() {return true;}
+&lt;/script&gt;
+
+&lt;body&gt;
+  &lt;p checked class=&quot;title&quot; id='title'&gt;Title&lt;/p&gt;
+  &lt;!-- here goes the rest of the page --&gt;
+&lt;/body&gt;
+</code></pre>
+<h2 id=markdown>Markdown</h2>
+<pre><code class="language-markdown"># hello world
+
+you can write text [with links](http://example.com) inline or [link references][1].
+
+* one _thing_ has *em*phasis
+* two __things__ are **bold**
+
+[1]: http://example.com
+
+---
+
+hello world
+===========
+
+&lt;this_is inline=&quot;xml&quot;&gt;&lt;/this_is&gt;
+
+&gt; markdown is so cool
+
+    so are code segments
+
+1. one thing (yeah!)
+2. two thing `i can write code`, and `more` wipee!
+</code></pre>
+<h1 id=lists>Lists</h1>
+<ul>
+<li>Item 1</li>
+<li>Item 2
+<ul>
+<li>Item 2a</li>
+<li>Item 2b
+<ul>
+<li>Item 2ba</li>
+</ul></li>
+</ul></li>
+</ul>
+<ol>
+<li>Item 1</li>
+<li>Item 2
+<ul>
+<li>Item 2a</li>
+<li>Item 2b</li>
+</ul></li>
+</ol>
+<h1 id=text>Text</h1>
+<p>Regular text</p>
+<p><em>This text will be italic</em></p>
+<p><strong>This text will be bold</strong></p>
+<p><em>You <strong>can</strong> combine them</em></p>
+<h1 id=links>Links</h1>
+<p><a href="Test.md">Link</a><br>
+<a href="mailto:name@company.com">MailTo</a></p>
+<h1 id=images>Images</h1>
+<p><img src="Media/Image.png" alt="Image"></p>
