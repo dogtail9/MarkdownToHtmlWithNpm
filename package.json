@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "convert": "node ConvertMakdownToHTML.js",
+    "watch:convert": "watch \"npm run convert\" .\\Markdown --wait=5",
+    "watch:reload": "live-reload --port 9091 /Markdown",
+    "watch": "parallelshell \"npm run watch:reload\" \"npm run watch:convert\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Christer Eriksson (CHER12)",
@@ -14,9 +17,15 @@
     "glob": "^7.0.3",
     "highlight.js": "^9.4.0",
     "img64": "^0.3.1",
+    "live-reload": "^1.1.0",
+    "livereload": "^0.4.1",
     "markdown-toc": "^0.12.11",
     "remarkable": "^1.6.2",
     "replace-ext": "0.0.1",
-    "rimraf": "^2.5.2"
+    "rimraf": "^2.5.2",
+    "watch": "^0.18.0"
+  },
+  "devDependencies": {
+    "parallelshell": "^2.0.0"
   }
 }

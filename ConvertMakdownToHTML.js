@@ -6,11 +6,18 @@ var toc = require('markdown-toc');
 var replaceExt = require('replace-ext');
 var hljs = require('highlight.js')
 var img64 = require('img64');
+var livereload = require('livereload');
 
 var minPort = 1000;
 var maxPort = 1998;
 var myPort = Math.floor(Math.random() * (maxPort - minPort + 1) + minPort);
- 
+
+//var server = livereload.createServer({
+//    port: myPort
+//});
+//server.watch('/Markdown');
+
+
  console.log('process.argv', process.argv);
  
 var md = new Remarkable({
@@ -64,6 +71,8 @@ glob("./Markdown/*.md", function (er, files) {
                 
                 html = template.replace('@@@HTML@@@', html);
                 html = html.replace('@@@BuildName@@@', BuildNumber);
+                html = html.replace('.md', '.html');
+                
                 var htmlWithImg64 = '';
 
                 console.log('innan');
