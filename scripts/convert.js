@@ -43,7 +43,6 @@ function getHtmlTemplate() {
 
 function getBuildNumber() {
     var i = process.argv.indexOf("--BuildNumber");
-    console.log('i', i);
     if (i > -1) {
         var time = 0;
         return '<p class="buildNumber">' + process.argv[i + 1] + '</p>';
@@ -58,7 +57,6 @@ function getBuildNumber() {
 
 var base64EncodeImg = async(function (html) {
     var p = __dirname + '\\..\\Markdown';
-    console.log('p', p);
     var encodedHtml = await(img64.encodeImgsAsync(html, { baseDir: p }));
     return encodedHtml;
 });
@@ -69,39 +67,76 @@ function convertToMarkdown(filename) {
     return html;
 };
 
-var convertFiles = async(function (filename) {
+function createDistFolderIfNotExist() {
+    var dir = './dist';
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir);
+    }
+};
+
+function deleteFileIfExists(filename) {
+    if (!fs.existsSync(filename)) {
+        fs.unlinkSync(filename);
+    }
+};
+
+function getDistPath(filename) {
+    var newFilename = replaceExt(filename, '.html');
+    newFilename = './dist/' + path.basename(newFilename);
+
+    return newFilename;
+};
+
+function saveFile(newFilename, html) {
+    createDistFolderIfNotExist();
+    var tempFilename = './dist/temp.html';
+
+    fs.writeFile(tempFilename, html, function (err) {
+        if (err) return console.log(err);
+        deleteFileIfExists(tempFilename);
+        fs.renameSync(tempFilename, newFilename);
+
+        console.log('File ' + newFilename + ' saved.');
+    });
+};
+
+function saveFile2(newFilename, html) {
+    createDistFolderIfNotExist();
+    fs.writeFile(newFilename, html, function (err) {
+        if (err) return console.log(err);
+        console.log('File ' + newFilename + ' saved.');
+    });
+};
+
+var convertFile = async(function (filename) {
     var html = convertToMarkdown(filename);
     html = await(base64EncodeImg(html));
     html = getHtmlTemplate().replace('@@@HTML@@@', html);
     html = html.replace('@@@BuildName@@@', getBuildNumber());
     html = html.replace('.md', '.html');
 
-    var dir = './dist';
-    if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir);
-    }
-
-    var newFilename = replaceExt(filename, '.html');
-    newFilename = './dist/' + path.basename(newFilename);
-    var tempFilename = './dist/temp.html';
-    
-    fs.writeFile(tempFilename, html, function (err) {
-        if (err) return console.log(err);
-        fs.unlinkSync(newFilename);
-        fs.rename(tempFilename, newFilename);
-        console.log('File ' + newFilename + ' saved.');
-    });
-
-    console.log(html);
+    return html;
 });
 
-console.log('START');
-glob("./Markdown/*.md", function (er, files) {
-    console.log('iterate over files');
+var processFile = async(function (er, files) {
     for (var index in files) {
         var filename = files[index];
-        console.log(filename);
-        convertFiles(filename);
+        console.log('Converting ' + filename + 'to HTML');
+        var html = await(convertFile(filename));
+        var tempFilename = getDistPath(filename);
+        saveFile2(tempFilename, html);
     };
 });
-console.log('STOP');
+
+glob("./Markdown/*.md", processFile);
+
+//console.log('START');
+//glob("./Markdown/*.md", function (er, files) {
+//    console.log('iterate over files');
+//    for (var index in files) {
+//        var filename = files[index];
+//        console.log(filename);
+//        convertFiles(filename);
+//    };
+//});
+//console.log('STOP');
