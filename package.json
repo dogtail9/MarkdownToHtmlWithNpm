@@ -4,26 +4,28 @@
   "description": "Convert Markdown to HTML",
   "main": "index.js",
   "scripts": {
-    "convert": "node ConvertMarkdownToHTML.js",
-    "watch:convert": "watch \"npm run convert\" .\\Markdown --wait=5",
-    "watch:reload": "live-reload --port 9091 /Markdown",
+    "convert": "node scripts/convert.js",
+    "watch:convert": "watch \"npm run convert\" .\\Markdown",
+    "watch:reload": "livereload .\\dist --port 9090",
     "watch": "parallelshell \"npm run watch:reload\" \"npm run watch:convert\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Christer Eriksson (CHER12)",
   "license": "MIT",
   "dependencies": {
-    "each-file": "^1.1.0",
+    "asyncawait": "^1.0.3",
+    "bluebird": "^3.4.0",
     "glob": "^7.0.3",
     "highlight.js": "^9.4.0",
     "img64": "^0.3.1",
-    "live-reload": "^1.1.0",
     "markdown-toc": "^0.12.11",
     "remarkable": "^1.6.2",
-    "replace-ext": "0.0.1",
-    "rimraf": "^2.5.2"
+    "replace-ext": "0.0.1"
   },
   "devDependencies": {
-    "parallelshell": "^2.0.0"
+    "livereload": "^0.4.1",
+    "parallelshell": "^2.0.0",
+    "rimraf": "^2.5.2",
+    "watch": "^0.18.0"
   }
 }
